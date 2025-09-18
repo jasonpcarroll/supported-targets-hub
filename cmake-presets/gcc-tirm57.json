@@ -1,0 +1,9 @@
+{
+    "version": 4,
+    "configurePresets": [
+        {
+            "name": "gcc-tirm57",
+            "toolchainFile": "cmake-toolchain-files/compilers/GCC/arm-none-eabi-gcc/supported-targets/gcc-tirm57.cmake"
+        }
+    ]
+}
