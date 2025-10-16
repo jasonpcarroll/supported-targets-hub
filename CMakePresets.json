@@ -11,7 +11,7 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "FREERTOS_PORT": "GCC_ARM_CRX_NOGIC",
                 "FREERTOS_HEAP": "3",
-                "TARGET_SUPPORT_REPO": "git@github.com:jasonpcarroll/supported-target-tirm57l.git",
+                "TARGET_SUPPORT_REPO": "https://github.com/jasonpcarroll/supported-target-tirm57l.git",
                 "CPU_FLAGS": "-mcpu=cortex-r5 -mfpu=vfpv3-d16 -marm -mfloat-abi=softfp"
             }
         },
@@ -23,7 +23,7 @@
                 "CMAKE_BUILD_TYPE": "Debug",
                 "FREERTOS_PORT": "GCC_POSIX",
                 "FREERTOS_HEAP": "3",
-                "TARGET_SUPPORT_REPO": "git@github.com:jasonpcarroll/supported-target-posix.git"
+                "TARGET_SUPPORT_REPO": "https://github.com/jasonpcarroll/supported-target-posix.git"
             }
         }
     ],
