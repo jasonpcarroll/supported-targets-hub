@@ -86,7 +86,7 @@ if(NOT TOOLCHAIN_FOUND)
     # Download and extract toolchain if not present
     set(TOOLCHAIN_DIR "${CMAKE_BINARY_DIR}/${TOOLCHAIN_FOLDER}")
     if(NOT EXISTS "${TOOLCHAIN_DIR}")
-        message(STATUS "Downloading ARM toolchain for ${CMAKE_HOST_SYSTEM_NAME} ${HOST_ARCH}...")
+        message(STATUS "Downloading GCC toolchain for ${CMAKE_HOST_SYSTEM_NAME} ${HOST_ARCH}...")
         get_filename_component(ARCHIVE_NAME "${TOOLCHAIN_URL}" NAME)
         file(DOWNLOAD "${TOOLCHAIN_URL}" "${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}" SHOW_PROGRESS)
         execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${ARCHIVE_NAME}" WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
