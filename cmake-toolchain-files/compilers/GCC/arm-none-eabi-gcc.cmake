@@ -8,7 +8,7 @@
 #-------------------------------------------------------------------------------
 
 set(CMAKE_SYSTEM_PROCESSOR arm)
-set(CMAKE_SYSTEM_NAME Generic)
+set(CMAKE_SYSTEM_NAME Generic-ELF)
 
 # Need this or CMake will not pass test compilation
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
@@ -17,18 +17,25 @@ set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 # Set compiler/assembler flags
 #-------------------------------------------------------------------------------
 
-# Note: CPU_FLAGS comes from the target toolchain file that includes this file.
+# Note: CPU_FLAGS can be specified from command line, a CMake Preset, or 
+# can comes from another toolchain file that includes this one after 
+# setting CPU_FLAGS.
 
 set(COMPILER_FLAGS "${CPU_FLAGS}" "-specs=nano.specs -fdata-sections -ffunction-sections")
 set(ASSEMBLER_FLAGS "${CPU_FLAGS}")
+
+set(CMAKE_C_FLAGS_DEBUG "-g")
 
 #-------------------------------------------------------------------------------
 # Check if toolchain is installed, otherwise install it to build directory.
 #-------------------------------------------------------------------------------
 
 set(C_COMPILER_PATH arm-none-eabi-gcc)
+set(C_DEBUGGER_PATH arm-none-eabi-gdb)
 set(ASM_COMPILER_PATH arm-none-eabi-gcc)
+set(ASM_DEBUGGER_PATH arm-none-eabi-gdb)
 set(CXX_COMPILER_PATH arm-none-eabi-g++)
+set(CXX_DEBUGGER_PATH arm-none-eabi-gdb)
 set(AR_PATH arm-none-eabi-gcc-ar)
 set(RANLIB_PATH arm-none-eabi-gcc-ranlib)
 set(OBJCOPY_PATH arm-none-eabi-objcopy)
@@ -36,8 +43,11 @@ set(SIZE_UTIL_PATH arm-none-eabi-size)
 
 set(TOOLCHAIN_NEEDED_BINS
     ${C_COMPILER_PATH}
+    ${C_DEBUGGER_PATH}
     ${ASM_COMPILER_PATH}
+    ${ASM_DEBUGGER_PATH}
     ${CXX_COMPILER_PATH}
+    ${CXX_DEBUGGER_PATH}
     ${AR_PATH}
     ${RANLIB_PATH}
     ${OBJCOPY_PATH}
@@ -96,8 +106,11 @@ if(NOT TOOLCHAIN_FOUND)
     endif()
 
     set(C_COMPILER_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gcc")
+    set(C_DEBUGGER_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gdb")
     set(ASM_COMPILER_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gcc")
+    set(ASM_DEBUGGER_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gdb")
     set(CXX_COMPILER_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-g++")
+    set(CXX_DEBUGGER_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gdb")
     set(AR_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gcc-ar")
     set(RANLIB_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-gcc-ranlib")
     set(OBJCOPY_PATH "${TOOLCHAIN_DIR}/bin/arm-none-eabi-objcopy")
@@ -110,8 +123,11 @@ endif()
 #-------------------------------------------------------------------------------
 
 set(CMAKE_C_COMPILER ${C_COMPILER_PATH} ${COMPILER_FLAGS})
+set(CMAKE_C_DEBUGGER ${C_DEBUGGER_PATH})
 set(CMAKE_ASM_COMPILER ${ASM_COMPILER_PATH} ${ASSEMBLER_FLAGS})
+set(CMAKE_ASM_DEBUGGER ${ASM_DEBUGGER_PATH})
 set(CMAKE_CXX_COMPILER ${CXX_COMPILER_PATH} ${COMPILER_FLAGS})
+set(CMAKE_CXX_DEBUGGER ${CXX_DEBUGGER_PATH})
 set(CMAKE_AR ${AR_PATH})
 set(CMAKE_RANLIB ${RANLIB_PATH})
 set(CMAKE_OBJCOPY ${OBJCOPY_PATH})

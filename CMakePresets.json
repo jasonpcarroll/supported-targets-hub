@@ -1,4 +1,40 @@
 {
     "version": 4,
-    "include":[ "cmake-presets/gcc-tirm57.json" ]
+    "configurePresets": [
+        {
+            "name": "gcc-tirm57",
+            "displayName": "ARM GCC TI Hercules RM57",
+            "description": "TI Hercules RM57: https://www.ti.com/tool/LAUNCHXL2-RM57L",
+            "toolchainFile": "cmake-toolchain-files/compilers/GCC/arm-none-eabi-gcc.cmake",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "FREERTOS_PORT": "GCC_ARM_CRX_NOGIC",
+                "FREERTOS_HEAP": "3",
+                "TARGET_SUPPORT_REPO": "git@github.com:jasonpcarroll/supported-target-tirm57l.git",
+                "CPU_FLAGS": "-mcpu=cortex-r5 -mfpu=vfpv3-d16 -marm -mfloat-abi=softfp"
+            }
+        },
+        {
+            "name": "gcc-posix",
+            "displayName": "GCC Posix System",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug",
+                "FREERTOS_PORT": "GCC_POSIX",
+                "FREERTOS_HEAP": "3",
+                "TARGET_SUPPORT_REPO": "git@github.com:jasonpcarroll/supported-target-posix.git"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "gcc-tirm57",
+            "configurePreset": "gcc-tirm57"
+        },
+        {
+            "name": "gcc-posix",
+            "configurePreset": "gcc-posix"
+        }
+    ]
 }
