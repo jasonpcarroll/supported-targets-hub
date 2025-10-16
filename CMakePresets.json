@@ -18,6 +18,7 @@
         {
             "name": "gcc-posix",
             "displayName": "GCC Posix System",
+            "toolchainFile": "cmake-toolchain-files/compilers/GCC/gcc.cmake",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
