@@ -2,7 +2,7 @@
     "version": 4,
     "configurePresets": [
         {
-            "name": "gcc-tirm57",
+            "name": "gcc-tirm57l",
             "displayName": "ARM GCC TI Hercules RM57",
             "description": "TI Hercules RM57: https://www.ti.com/tool/LAUNCHXL2-RM57L",
             "toolchainFile": "cmake-toolchain-files/compilers/GCC/arm-none-eabi-gcc.cmake",
@@ -30,8 +30,8 @@
     ],
     "buildPresets": [
         {
-            "name": "gcc-tirm57",
-            "configurePreset": "gcc-tirm57"
+            "name": "gcc-tirm57l",
+            "configurePreset": "gcc-tirm57l"
         },
         {
             "name": "gcc-posix",
