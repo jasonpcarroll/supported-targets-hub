@@ -6,7 +6,6 @@
             "displayName": "ARM GCC TI Hercules RM57",
             "description": "TI Hercules RM57: https://www.ti.com/tool/LAUNCHXL2-RM57L",
             "toolchainFile": "cmake-toolchain-files/compilers/GCC/arm-none-eabi-gcc.cmake",
-            "generator": "Ninja",
             "binaryDir": "${sourceDir}/build/${presetName}",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
