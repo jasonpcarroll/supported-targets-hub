@@ -82,12 +82,10 @@ if(NOT TOOLCHAIN_FOUND)
       set(HOST_ARCH "x86_64")
     endif()
     if(HOST_ARCH STREQUAL "x86_64")
-      set(TOOLCHAIN_URL "https://www.cygwin.com/setup-x86_64.exe")
+      set(TOOLCHAIN_URL
+          "https://github.com/brechtsanders/winlibs_mingw/releases/download/15.2.0posix-13.0.0-ucrt-r2/winlibs-x86_64-posix-seh-gcc-15.2.0-mingw-w64ucrt-13.0.0-r2.zip"
+      )
       set(TOOLCHAIN_FOLDER "mingw64")
-
-      file(DOWNLOAD "${TOOLCHAIN_URL}" "${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}"
-           SHOW_PROGRESS)
-
     endif()
   elseif(CMAKE_HOST_SYSTEM_NAME STREQUAL "Darwin")
     message("Add GCC tools yourself!")
@@ -104,15 +102,8 @@ if(NOT TOOLCHAIN_FOUND)
     get_filename_component(ARCHIVE_NAME "${TOOLCHAIN_URL}" NAME)
     file(DOWNLOAD "${TOOLCHAIN_URL}" "${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}"
          SHOW_PROGRESS)
-    if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Windows")
-      execute_process(
-        COMMAND ${CMAKE_BINARY_DIR}/${ARCHIVE_NAME} --root
-                "${CMAKE_BINARY_DIR}/cygwin-gcc" --no-admin -P gcc)
-    else()
-      execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${ARCHIVE_NAME}"
-                      WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
-    endif()
-
+    execute_process(COMMAND ${CMAKE_COMMAND} -E tar xf "${ARCHIVE_NAME}"
+                    WORKING_DIRECTORY "${CMAKE_BINARY_DIR}")
     file(REMOVE "${CMAKE_BINARY_DIR}/${ARCHIVE_NAME}")
   endif()
 
