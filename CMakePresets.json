@@ -27,6 +27,11 @@
                 "FREERTOS_PORT": "GCC_POSIX",
                 "FREERTOS_HEAP": "3",
                 "TARGET_SUPPORT_REPO": "https://github.com/jasonpcarroll/supported-target-posix.git"
+            },
+            "condition": {
+                "type": "notEquals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
             }
         }
     ],
