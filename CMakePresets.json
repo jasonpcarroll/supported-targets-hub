@@ -10,7 +10,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "FREERTOS_PORT": "GCC_ARM_CRX_NOGIC",
-                "FREERTOS_HEAP": "3",
+                "FREERTOS_HEAP": "4",
                 "TARGET_SUPPORT_REPO": "https://github.com/jasonpcarroll/supported-target-tirm57l.git",
                 "CPU_FLAGS": "-mcpu=cortex-r5 -mfpu=vfpv3-d16 -marm -mfloat-abi=softfp"
             }
@@ -24,7 +24,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "FREERTOS_PORT": "GCC_ARM_CRX_NOGIC",
-                "FREERTOS_HEAP": "3",
+                "FREERTOS_HEAP": "4",
                 "TARGET_SUPPORT_REPO": "https://github.com/jasonpcarroll/supported-target-tirm46.git",
                 "CPU_FLAGS": "-mcpu=cortex-r5 -mfpu=vfpv3-d16 -marm -mfloat-abi=softfp"
             }
@@ -38,7 +38,7 @@
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Debug",
                 "FREERTOS_PORT": "GCC_POSIX",
-                "FREERTOS_HEAP": "3",
+                "FREERTOS_HEAP": "4",
                 "TARGET_SUPPORT_REPO": "https://github.com/jasonpcarroll/supported-target-posix.git"
             },
             "condition": {
